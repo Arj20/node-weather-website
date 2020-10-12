@@ -1,3 +1,4 @@
+const { json } = require('express');
 const request = require('postman-request');
 const { parse } = require('postman-request/lib/cookies');
 
@@ -11,7 +12,8 @@ const forecast=(latitude,longitude,callback)=>
             else if (response.error)
                 callback('Unable to find the data for the required location!,Try another search', undefined);
             else {
-                callback(undefined, 'It is ' + jsonData.current.temperature + ' and feels like ' + jsonData.current.feelslike);
+        
+                callback(undefined, 'It is ' + jsonData.current.temperature + ' and feels like ' + jsonData.current.feelslike + 'the wind speed is ' + jsonData.current.wind_speed);
             }
         })
 }
